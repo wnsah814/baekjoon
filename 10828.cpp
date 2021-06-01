@@ -33,8 +33,13 @@ int main() {
             cout << s.size() << "\n";
         else if(str == "empty")
             cout << s.empty() << "\n";
-        else if(str == "top")
-            cout << s.top() << "\n";
+        else if(str == "top") {
+            if(s.size()==0) {
+                cout << "-1\n";
+            } else {
+                cout << s.top() << "\n";
+            }
+        }
     }
 
 

@@ -32,9 +32,17 @@ int main(){
         } else if(str == "empty") {
             cout << q.empty() << "\n";
         } else if(str == "front") {
-            cout << q.front() << "\n";
+            if(q.size()==0) {
+                cout << "-1\n"; 
+            } else {
+                cout << q.front() << "\n";
+            }
         } else if(str == "back") {
-            cout << q.back() << "\n";
+            if(q.size()==0) {
+                cout << "-1\n";
+            } else {
+                cout << q.back() << "\n";
+            }
         }
     }
 }
