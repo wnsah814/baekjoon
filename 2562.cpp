@@ -1,19 +1,20 @@
 #include<iostream>
 #include<algorithm>
+#include<utility>
 #include<vector>
+
 using namespace std;
 
-vector<int> v;
+vector<pair<int, int>> v;
 
 int main() {
-    int x;
-
-    for(int i=0; i<9; i++) {
-        cin >> x;
-        v.push_back(x);    
+    for(int i=1; i<=9; i++) {
+        int n;
+        cin >> n;
+        v.push_back({n, i});
     }
-
     sort(v.begin(), v.end());
+    cout << v.back().first << "\n" << v.back().second; 
 
-    
+    return 0;
 }
