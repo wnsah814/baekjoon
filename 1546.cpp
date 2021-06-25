@@ -1,16 +1,27 @@
-#include<iostream>
-#include<stdlib.h>
-#include<algorithm>
+#include <iostream>
 using namespace std;
 
-int main() {
-    int n;
-    cin >> n;
-    int* arr = (int*)malloc(sizeof(int) * n);
+int main()
+{
+    int N;
+    cin >> N;
 
-    for(int i=0; i<n; i++) {
-        cin >> arr[i];
+    double sum = 0;
+    int max = 0;
+    for (int i = 0; i < N; i++)
+    {
+        int x;
+        cin >> x;
+
+        sum += x;
+
+        if (x > max)
+        {
+            max = x;
+        }
     }
+    double result = (sum / N) / max * 100;
+    cout << result;
 
-    free(arr);
+    return 0;
 }

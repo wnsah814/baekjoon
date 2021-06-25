@@ -3,12 +3,11 @@ using namespace std;
 
 int main()
 {
+    int a, b;
     while (1)
     {
-        int a, b;
         cin >> a >> b;
-
-        if (cin.eof() == true)
+        if (a == 0 && b == 0)
         {
             break;
         }
