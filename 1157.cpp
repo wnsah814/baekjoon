@@ -1,4 +1,5 @@
 #include <iostream>
+<<<<<<< HEAD
 using namespace std;
 
 int n[26];
@@ -32,4 +33,22 @@ int main()
 	cout << ch;
 
 	return 0;
+=======
+#include <vector>
+#include <utility>
+#include <string>
+using namespace std;
+
+vector<pair<int, string>> v;
+
+int main()
+{
+    string s;
+    cin >> s;
+
+    for (int i = 0; i < s.length(); i++)
+    {
+        if
+    }
+>>>>>>> b96d999fdbe3e4ed377210aaab907434831f632c
 }

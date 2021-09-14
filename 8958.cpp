@@ -1,15 +1,33 @@
 #include <iostream>
+#include <string>
 using namespace std;
-
-// O : 79
-// X : 88
 
 int main()
 {
-    char x;
-    cin >> x;
+    int N;
+    cin >> N;
 
-    cout << (int)x;
+    for (int i = 0; i < N; i++)
+    {
+        string n;
+        cin >> n;
+        int cnt = 0;
+        int result = 0;
+
+        for (int j = 0; j < n.length(); j++)
+        {
+            if (n[j] == 'O')
+            {
+                cnt++;
+                result += cnt;
+            }
+            else
+            {
+                cnt = 0;
+            }
+        }
+        cout << result << "\n";
+    }
 
     return 0;
 }
