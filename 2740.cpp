@@ -14,7 +14,7 @@ int main() {
     vector<vector<int>> B(x, vector<int>(y));
     for (int i = 0; i < x; ++i) {
         for (int j = 0; j < y; ++j) {
-            cin >> A[i][j];
+            cin >> B[i][j];
         }
     }
 
