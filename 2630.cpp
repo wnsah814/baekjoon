@@ -3,17 +3,28 @@ using namespace std;
 int N;
 vector<vector<int>> v;
 
-int numPaper = 0;
-int numSplit = 0;
-bool check(int top, int bottom, int left, int right) {
+int numBlue = 0;
+int numWhite = 0;
+bool check(int top, int bottom, int left, int right) { // can divide more
+    bool one = false;
+    bool zero = false;
     for (int i = top; i < bottom; ++i) {
         for (int j = left; j < right; ++j) {
             if (v[i][j] == 0) {
-                return true;
+                if (one) return true;
+                zero = true;
+            } else {
+                if (zero) return true;
+                one = true;
             }
         }
     }
-    numPaper++;
+    if (one && !zero) {
+        numBlue++;
+    }
+    if (!one && zero) {
+        numWhite++;
+    }
     return false;
 }
 
@@ -22,10 +33,9 @@ void solve(int top, int bottom, int left, int right) {
         int row_mid = (top + bottom) / 2;
         int col_mid = (left + right) / 2;
         solve(top, row_mid, left, col_mid);
-        solve(row_mid + 1, bottom, left, col_mid);
-        solve(top, row_mid, col_mid + 1, right);
-        solve(row_mid + 1, bottom, col_mid + 1, right);
-        numSplit++;
+        solve(row_mid, bottom, left, col_mid);
+        solve(top, row_mid, col_mid, right);
+        solve(row_mid, bottom, col_mid, right);
     }
 }
 
@@ -38,6 +48,6 @@ int main() {
         }
     }
     solve(0, N, 0, N);
-    cout << numPaper << " " << numSplit;
+    cout << numWhite << '\n' << numBlue;
     return 0;
 }
