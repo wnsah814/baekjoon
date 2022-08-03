@@ -29,35 +29,48 @@ void bfs(int i, int j, int h) {
         }
     }    
 }
+// void dfs(int y, int x, int h) {
+//     visited[y][x] = true;
+//     for (int k = 0; k < 4; ++k) {
+//         int ny = y + dy[k];
+//         int nx = x + dx[k];
+//         if (ny >= N || nx >= N || ny < 0 || nx < 0) continue;
+//         if (visited[ny][nx] || adj[ny][nx] <= h) continue;
+//         dfs(ny, nx, h);
+//     }
+// }
 
 int main() {
+    cin.tie(0) -> sync_with_stdio(0);
     int T;
     cin >> T;
     for (int t = 1; t <= T; ++t) {
-        int maxH = 0;
+        int maxH = 0, minH = 101;
         cin >> N;
         for (int i = 0; i < N; ++i) {
             for (int j = 0; j < N; ++j) {
                 cin >> adj[i][j];
                 maxH = max(adj[i][j], maxH);
+                minH = min(adj[i][j], minH);
             }
         }
 
-        int ans[maxH + 1] = {0, };
-        ans[0] = 1;
-        for (int h = 1; h <= maxH; ++h) {
-            if (ans[h - 1] == 0) break; 
+        int maxD = 1;
+        for (int h = minH; h <= maxH; ++h) {
             memset(visited, false, sizeof(visited));
+            int tmp = 0;
             for (int i = 0; i < N; ++i) {
                 for (int j = 0; j < N; ++j) {
                     if (adj[i][j] > h && !visited[i][j]) {
                         bfs(i, j, h);
-                        ans[h]++;
+                        // dfs(i, j, h);
+                        tmp++;
                     }
                 }
             }
+            maxD = max(maxD, tmp);
         }
-        cout << "#" << t << ' ' << *max_element(ans, ans + maxH + 1) << '\n';
+        cout << "#" << t << ' ' << maxD << '\n';
     }
     return 0;
 }
